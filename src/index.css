@@ -1,0 +1,123 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;600&family=JetBrains+Mono&family=UnifrakturMaguntia&family=Noto+Serif+SC:wght@400;700&family=Zhi+Mang+Xing&display=swap');
+
+@theme {
+  --font-serif: "Crimson Pro", "Noto Serif SC", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "UnifrakturMaguntia", cursive;
+  --font-graffiti: "Zhi Mang Xing", cursive;
+  
+  --color-parchment: #c0a468;
+  --color-ink: #111111;
+  --color-blood: #7b0000;
+  --color-gold: #8c6d27;
+}
+
+@layer base {
+  body {
+    background-color: #020202;
+    background-image: 
+      radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%),
+      linear-gradient(rgba(0,0,0,0.96), rgba(0,0,0,0.96)),
+      url('https://picsum.photos/seed/vintage-ink-desk/1920/1080?blur=10');
+    background-size: cover;
+    color: var(--color-ink);
+    font-family: var(--font-serif);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.parchment-texture {
+  background-color: var(--color-parchment);
+  background-image: 
+    url("https://www.transparenttextures.com/patterns/handmade-paper.png"),
+    url("https://www.transparenttextures.com/patterns/aged-paper.png"),
+    url("https://www.transparenttextures.com/patterns/noise-lines.png");
+  background-blend-mode: multiply;
+  box-shadow: 
+    inset 0 0 120px rgba(0,0,0,0.4),
+    0 25px 60px rgba(0,0,0,0.6);
+  position: relative;
+  /* Damaged old newspaper edge */
+  clip-path: polygon(
+    0% 2%, 2% 0.5%, 15% 0%, 85% 1%, 98% 0%, 100% 3%, 100% 96%, 97% 100%, 80% 98.5%, 20% 100%, 2% 99%, 0% 97%,
+    1% 50%
+  );
+}
+
+.parchment-texture::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 10%, rgba(60, 40, 20, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(60, 40, 20, 0.2) 0%, transparent 40%),
+    url("https://www.transparenttextures.com/patterns/noise-lines.png");
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+
+.parchment-texture::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.4);
+  background-image: url("https://www.transparenttextures.com/patterns/dust.png");
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.book-crease::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, transparent 49.5%, rgba(0,0,0,0.3) 50%, transparent 50.5%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.blood-splatter {
+  mask-image: url("https://www.transparenttextures.com/patterns/splat.png");
+  background-color: var(--color-blood);
+  opacity: 0.25;
+}
+
+.book-shadow {
+  box-shadow: 
+    0 40px 80px -10px rgba(0, 0, 0, 0.7), 
+    0 20px 40px -20px rgba(0, 0, 0, 0.8),
+    0 0 2px rgba(255,255,255,0.1);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+.lock-chain {
+  background-image: repeating-linear-gradient(45deg, #333 0, #333 10px, #444 10px, #444 20px);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.wax-seal {
+  background: radial-gradient(circle at 30% 30%, #ff4d4d, #8b0000);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
